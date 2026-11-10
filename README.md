@@ -7,7 +7,7 @@
 | Faculty console (static, keyboard-first, native MathML) | `console/` |
 | Prompt log + design decisions | `PROMPTS.md` |
 | Product thinking (1 page) | `PRODUCT.md` |
-| Bonus: 5 unreported defects | console → "Unreported" tab · `engine/analysis/bonus_findings.json` |
+| Bonus: 10 unreported defects | console → "Unreported" tab · `engine/analysis/bonus_findings.json` |
 
 ```
 python3 engine/run.py            # rebuild results.json, all invariants asserted
@@ -21,7 +21,10 @@ routes **18 auto_apply · 8 faculty_review · 18 no_change**; every auto-applied
 edit passed the taxonomy scope guard (field whitelist, verbatim-unique anchor)
 and, for answer keys, independent-proof (solver derives it, stored solution
 doesn't contradict it). Prompt-injection report R027 was contained; the
-already-fixed case R017 was detected from `errorHistory` + live text.
+already-fixed case R017 was detected from `errorHistory` + live text. A
+second-opinion analysis pass was diffed against the main one before
+finalising — 43/44 verdicts agreed; see PROMPTS.md §4 for what the diff
+caught in both directions.
 
 ---
 

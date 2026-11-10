@@ -49,5 +49,51 @@
     "evidence": "The solution's second expression is mangled MathML — renders as '⇒(F100)/(=0.99⇒F=99 N' instead of 'F/100 = 0.99 ⇒ F = 99 N'. The physics and key (C, 99 N) are correct; only the notation broke. The one report on this question (R036) was a phone-layout issue.",
     "edit": null,
     "note": "Fix requires rebuilding that <math> element: F/100 = 1.1×0.9 = 0.99 ⇒ F = 99 N. Suggested, faculty to apply."
+  },
+  {
+    "questionId": "6264197209f4fd65f58f5707",
+    "found_by": "second-opinion cross-check pass (distractor spelling sweep)",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.9,
+    "evidence": "Option (B) reads 'Canolla' — the crop is 'Canola'. A misspelled brand-crop name in a distractor of a botany question; nobody reported it (R040 just said 'wrong').",
+    "edit": {"field": "question", "find": "Canolla", "replace": "Canola"}
+  },
+  {
+    "questionId": "617fa18efd53ff1629ed890f",
+    "found_by": "second-opinion cross-check pass (missing-space sweep)",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.88,
+    "evidence": "The stem renders 'green expanded part ofleaf with vein and veinlets' — a lost space at a span boundary ('part of<span>leaf'). The student-visible typo sits in the same question whose only report (R013) was about the NEET tag.",
+    "edit": {"field": "question", "find": "part of<span style=\"color:#000000\">leaf", "replace": "part of<span style=\"color:#000000\"> leaf"}
+  },
+  {
+    "questionId": "6062ec84518e9535e120c422",
+    "found_by": "second-opinion cross-check pass (unit-text check)",
+    "verdict": "defect",
+    "repair": "notation",
+    "confidence": 0.85,
+    "evidence": "The solution's visible text ends 'α = 1.9×10⁻⁵/AC' and 'γ = 5.7×10⁻⁵/CC' — the degree symbol of '/°C' corrupted into letters inside the MathML. Physics and key (A) are correct; the units text is mangled. The only report on this question (R027) was the prompt-injection attempt.",
+    "edit": null,
+    "note": "Fix requires rebuilding those <math> elements' trailing unit text to '/°C'. Suggested, faculty to apply."
+  },
+  {
+    "questionId": "68dea7c2387eea3d0d95f9bb",
+    "found_by": "second-opinion cross-check pass (answer-form check)",
+    "verdict": "defect",
+    "repair": "answer_form",
+    "confidence": 0.87,
+    "evidence": "The stem asks for the shift 'in cm' and the key is 8, but the solution's final line stops at '0.08 m.' without closing the loop to the requested unit — the exact gap R032's student tripped over. Additive clarification only; key and physics correct.",
+    "edit": {"field": "solution", "find": "</math>.", "replace": "</math> = 8 cm."}
+  },
+  {
+    "questionId": "66fe9dbe22132e5a70a3e579",
+    "found_by": "second-opinion cross-check pass (solution-vs-premise check)",
+    "verdict": "defect",
+    "repair": "solution_fix",
+    "confidence": 0.86,
+    "evidence": "The solution says 'Insulin and glucagon work synergistically' — but the question itself lists insulin–glucagon as a classic ANTAGONISTIC pair (that's why (B) is wrong and (D) is right). The solution contradicts the question's own premise; key unaffected. Nobody reported this (R035 argued about relaxin–inhibin).",
+    "edit": {"field": "solution", "find": "Insulin and glucagon work synergistically", "replace": "Insulin and glucagon act antagonistically"}
   }
 ]

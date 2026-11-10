@@ -302,8 +302,35 @@ the stakes. The rule is on the queue header, not in a doc.
 **Cost.** This run: 39 solver + 39 triage + reply passes ≈ 80–120 LLM calls for
 44 reports (duplicates share one call-chain; guards are free). At Acadza's
 scale the LLM only ever sees *reported* questions (a small fraction of 8 lakh)
-plus optional batch sweeps of never-reported ones — the sweep that found the 5
+plus optional batch sweeps of never-reported ones — the sweep that found the
 bonus defects is mostly regex and would run nightly on changed chapters only.
+
+**Second-opinion pass (and why the bonus tab has 10 entries).** Before
+finalising, I ran an independent second analysis over the same data and diffed
+it against mine, report by report. It agreed on 43 of 44 verdicts — and the
+diff was worth more than the agreement:
+
+- **Its 4 catches became bonus findings 6–9** ('Canolla' in a distractor,
+  'ofleaf' at a span boundary, '/AC' '/CC' corrupted units, and the YDSE
+  solution stopping at 0.08 m when the stem asks cm). Each was verified
+  against the raw record before absorbing; that pass also nudged me to
+  re-check and add the insulin–glucagon 'synergistically' contradiction.
+- **Its one disagreement (R005) was wrong in the instructive direction**: it
+  auto-applied changing the key from n=2 to n=1 with evidence that literally
+  derives q/2ε₀ — which *is* n=2 — then told the student "Yes, n = 1." A
+  self-contradicting proof that passed its own confidence gate. That is the
+  failure mode the "solver must derive it AND the stored solution must not
+  contradict it" rule plus arithmetic re-verification exists for, and it's
+  why R005 stays `no_error` here (the corner charge's 1/8 factor gives
+  2q/8ε₀ = q/4ε₀; face-centre gives (q/2)/2ε₀ = q/4ε₀; total q/2ε₀ ⇒ n = 2,
+  matching the key).
+- Its bonus list also proposed `type_mismatch` on 68f21caf while its own
+  `results.json` called the same question `answer_key` — a reminder to diff a
+  solution's bonus notes against its main verdicts, not just against mine.
+
+Treat any single AI pass as one reviewer, not a ground truth: the second
+reviewer's value was the four things I'd missed; my value back to it was the
+one harmful auto-apply it would have shipped.
 
 **Verification.** `python3 engine/run.py` re-derives `results.json` and asserts
 the invariants: 44 rows, taxonomy-only keys, consistent verdicts across
