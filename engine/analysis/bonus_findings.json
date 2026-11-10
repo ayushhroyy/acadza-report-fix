@@ -1,0 +1,53 @@
+[
+  {
+    "questionId": "6264197209f4fd65f58f5707",
+    "found_by": "sweep: glued-word detector",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.93,
+    "evidence": "Solution text has five words glued by a lost space, one of them dangerous: 'can lead tonight blindness' reads as 'tonight' instead of 'to night'. Also 'riceis', 'producebeta-carotene', 'ofvitamin', 'helpprevent'.",
+    "edit": {"field": "solution", "find": "Golden riceis genetically engineered to producebeta-carotene, a precursor ofvitamin A, in the edible parts of the rice. It was specifically developed to helpprevent vitamin A deficiency, which can lead tonight blindness",
+             "replace": "Golden rice is genetically engineered to produce beta-carotene, a precursor of vitamin A, in the edible parts of the rice. It was specifically developed to help prevent vitamin A deficiency, which can lead to night blindness"},
+    "reports_that_missed_it": ["R040 ('wrong' — verified this question clean; the defect was in the solution's text, not its physics)"]
+  },
+  {
+    "questionId": "61ee6c9d90a1a968a168686b",
+    "found_by": "sweep: typo list (biomedical)",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.92,
+    "evidence": "Solution says 'Rugae are prominant folds' (→ prominent) and 'Maceus membrane of small intestine' (→ Mucous membrane). The student reported the option typo ('plexux') but nobody reported these two in the solution.",
+    "edit": {"field": "solution", "find": "Rugae are prominant folds found in empty stomach. Maceus membrane",
+             "replace": "Rugae are prominent folds found in empty stomach. Mucous membrane"}
+  },
+  {
+    "questionId": "620e23cecc50543bc7db9186",
+    "found_by": "sweep: typo list",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.9,
+    "evidence": "Solution says 'to see it, wheater, it has a forked tongue' — 'wheater' → 'whether' (and the comma splice). The report on this question (R026) was about syllabus, not the text.",
+    "edit": {"field": "solution", "find": "to see it, wheater, it has a forked tongue",
+             "replace": "to see whether it has a forked tongue"}
+  },
+  {
+    "questionId": "66fe9dbe22132e5a70a3e579",
+    "found_by": "sweep: option-format parallelism",
+    "verdict": "defect",
+    "repair": "spelling",
+    "confidence": 0.85,
+    "evidence": "Options A, B, D use a separator dash ('Parathormone – Calcitonin', 'Insulin - Glucagon', 'Relaxin - Inhibin') but option C reads 'Aldosterone Atrial Natriuretic Factor' with none — looks like two items jammed together. Solution also has 'to softens the ligament'. Nobody reported this question's formatting (R035 was about the answer).",
+    "edit": {"field": "question", "find": "(C) Aldosterone Atrial Natriuretic Factor",
+             "replace": "(C) Aldosterone - Atrial Natriuretic Factor"}
+  },
+  {
+    "questionId": "60ca4feb6420652745f55522",
+    "found_by": "manual read of rendered MathML",
+    "verdict": "defect",
+    "repair": "notation",
+    "confidence": 0.88,
+    "evidence": "The solution's second expression is mangled MathML — renders as '⇒(F100)/(=0.99⇒F=99 N' instead of 'F/100 = 0.99 ⇒ F = 99 N'. The physics and key (C, 99 N) are correct; only the notation broke. The one report on this question (R036) was a phone-layout issue.",
+    "edit": null,
+    "note": "Fix requires rebuilding that <math> element: F/100 = 1.1×0.9 = 0.99 ⇒ F = 99 N. Suggested, faculty to apply."
+  }
+]

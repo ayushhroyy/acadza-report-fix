@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acadza · Report → Fix Console</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">
+    <span class="logo">A</span>
+    <div class="brand-text">
+      <strong>Report → Fix</strong>
+      <span class="sub">faculty review console</span>
+    </div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="queue" class="active">Queue <span class="count" id="qcount"></span></button>
+    <button data-tab="bonus">Unreported <span class="count" id="bcount"></span></button>
+    <button data-tab="audit">Audit <span class="count" id="acount"></span></button>
+  </nav>
+</header>
+
+<div id="layout">
+
+  <!-- ══════════ LEFT: queue ══════════ -->
+  <aside id="rail">
+    <div class="filters" id="filters">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="faculty_review">Needs you</button>
+      <button data-filter="auto_apply">Auto-applied</button>
+      <button data-filter="defect">Defects</button>
+      <button data-filter="no_change">No change</button>
+    </div>
+    <div class="sort-note" title="mis-scoring (100) &gt; unusable (60) &gt; hygiene (30); +15 per corroborating report; +1 per day of age, capped at 7">
+      sorted by urgency — <em>who's being hurt right now</em> ⓘ
+    </div>
+    <div id="caselist"></div>
+  </aside>
+
+  <!-- ══════════ CENTER: case ══════════ -->
+  <main id="main"></main>
+</div>
+
+<div id="toast"></div>
+<div id="modal"></div>
+
+<footer id="footbar">
+  <span class="kbd-hints">
+    <b>j</b>/<b>k</b> move · <b>a</b> approve · <b>e</b> edit · <b>x</b> reject · <b>1</b>/<b>2</b>/<b>3</b> tabs
+  </span>
+  <span class="foot-note">engine v1 · offline mode (precomputed results — see PROMPTS.md §0) · audit stored locally</span>
+</footer>
+
+<script src="data.js"></script>
+<script src="diff.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
